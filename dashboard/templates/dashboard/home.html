@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>FYNAT title</title>
+</head>
+<body>
+    {% if user.is_authenticated %}
+        Hi {{user.username}}!
+    {% endif %}
+    {% for classes_info in classes_info %}
+        <h1>{{classes_info.Name}}</h1>
+        <p style="margin-left: 40px">{{classes_info.Name}} is a {{classes_info.Year}}</p>
+        <p style="margin-left: 40px">{{classes_info.Name}} is taking {{classes_info.Classes}}</p>
+    {% endfor %}
+</body>
+</html>
