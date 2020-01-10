@@ -6,7 +6,7 @@ classes_info = [
     {
         'Name': "Akshay Iyer",
         "Year": "Sophomore",
-        "Classes": "CS 2110, CS 3600, MUS 3161, MATH 3012, INTA 2050"
+        "Classes": "CS 2110, CS 3600, MUS 3131, MATH 3012, INTA 2050"
     },
     {
         "Name": "Sally Bird",
