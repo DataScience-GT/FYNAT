@@ -9,9 +9,9 @@ classes_info = [
         "Classes": "CS 2110, CS 3600, MUS 3131, MATH 3012, INTA 2050"
     },
     {
-        "Name": "Sally Bird",
-        "Year": "Sophomore",
-        "Classes": "CS 1332, BIO 1220, MATH 3215, BME 2000"
+        "Name": "Jennifer",
+        "Year": "Freshman",
+        "Classes": "MATH 1552, GT 1201, PHYS 2211, ECE 2020"
     }
 ]
 
