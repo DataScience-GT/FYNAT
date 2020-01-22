@@ -27,6 +27,6 @@ class HomeView(TemplateView):
             text2 = form.cleaned_data['class2']
             text3 = form.cleaned_data['class3']
             form = HomeForm() #after post request you have a new blank form
-            return redirect('casa: casa')
+            #return redirect('profile: profile')
         args = {'form': form, 'text': text, 'text2': text2, 'text3': text3}
         return render(request, self.template_name, args)

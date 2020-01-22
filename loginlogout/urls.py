@@ -21,14 +21,14 @@ from accounts import views as account_views
 from django.conf import settings
 from django.conf.urls.static import static
 
-app_name = "dashboard"
+#app_name = "dashboard-home"
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('accounts.urls')), # new
     path('accounts/', include('django.contrib.auth.urls')),
     path('', TemplateView.as_view(template_name='home.html'), name='home'),
-    path('dashboard/', include('dashboard.urls', namespace = 'casa')),
+    path('dashboard/', include('dashboard.urls')),
     path('profile/', account_views.profile, name="profile"),
 ]
 
