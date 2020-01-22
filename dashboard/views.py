@@ -1,26 +1,32 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
+from django.views.generic import TemplateView
+from dashboard.forms import HomeForm
+from dashboard.models import Post
 
 # Create your views here.
-classes_info = [
-    {
-        'Name': "Akshay Iyer",
-        "Year": "Sophomore",
-        "Classes": "CS 2110, CS 3600, MUS 3131, MATH 3012, INTA 2050"
-    },
-    {
-        "Name": "Sally Bird",
-        "Year": "Sophomore",
-        "Classes": "CS 1332, BIO 1220, MATH 3215, BME 2000"
-    }
-]
 
-def home(request): #logic for handling what happens when user goes to the home page
-    context = {
-        "classes_info": classes_info #dictionary with key of "classes_info, containing values of the list of dictionaries that was made above"
-    }
-    # we can have access to this in the home template
-    return render(request, 'dashboard/home.html', context)
 
-def about(request):
-    return render(request, 'dashboard/about.html')
+
+class HomeView(TemplateView):
+    template_name = 'dashboard/home.html'
+
+    def get(self, request): #Handling get requests
+        form = HomeForm() #empty constructor renders blank form
+        posts = Post.objects.all() #get all post objects in the database
+        return render(request, self.template_name, {'form': form})
+    def post(self, request):
+        form = HomeForm(request.POST) #fills out form that was received with post request
+        if form.is_valid():
+            post = form.save(commit=False) #save data that was passed in to Post object, form has been associated with model.
+            #In the meta class it specifies the model = Post so that's how Django knows to store post data in the post model
+            post.user = request.user #needs association bc declared this to be a mandatory field by default
+            post.save()
+
+            text = form.cleaned_data['class1'] #extra security measure provided by Django to prevent malicious attack
+            text2 = form.cleaned_data['class2']
+            text3 = form.cleaned_data['class3']
+            form = HomeForm() #after post request you have a new blank form
+            return redirect('casa: casa')
+        args = {'form': form, 'text': text, 'text2': text2, 'text3': text3}
+        return render(request, self.template_name, args)

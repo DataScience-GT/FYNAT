@@ -4,7 +4,27 @@
     <title>FYNAT title</title>
 </head>
 <body>
-    {% if user.is_authenticated %}
+    {% block body %}
+    <div class = "container">
+        <h1>Please enter your 3 favorite classes below</h1>
+        <form method = "post">
+            {%csrf_token %}
+            {{ form.as_p}}
+            <button type = "submit">Submit</button>
+        </form>
+        <h2> {{ text }} </h2>
+        {% for post in posts %}
+            <h1> {{ post.post }} </h1>
+            <p> {{ post.date }} </p>
+        {% endfor %}
+    </div>
+    {% endblock %}
+</body>
+</html>
+
+
+
+<!--{% if user.is_authenticated %}
         Hi {{user.username}}!
     {% endif %}
     {% for classes_info in classes_info %}
@@ -12,5 +32,4 @@
         <p style="margin-left: 40px">{{classes_info.Name}} is a {{classes_info.Year}}</p>
         <p style="margin-left: 40px">{{classes_info.Name}} is taking {{classes_info.Classes}}</p>
     {% endfor %}
-</body>
-</html>
+-->
