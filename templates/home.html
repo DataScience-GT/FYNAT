@@ -13,9 +13,7 @@
         <h1> Welcome to FYNAT! </h1>
         <p> What is FYNAT? FYNAT stands for find your niche at Tech. It's a way for students to connect with each other based on common interests and overall build a better community here at Tech.
     </div>
-  <p>Already have an account? Login here: </p>
-  <a href="{% url 'login' %}">login</a>
-  <p> Don't have one, no worries feel free to sign up here: </p>
-  <a href = "{% url 'signup' %}"> signup</a>
+  <p>Already have an account? <a href="{% url 'login' %}">Login here</a></p>
+  <p> Don't have one, no worries feel free to <a href = "{% url 'signup' %}">sign up here</a> </p>
 {% endif %}
 {% endblock %}
