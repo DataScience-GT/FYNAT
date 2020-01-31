@@ -24,7 +24,7 @@ def signup(request):
             form.save()
             username = form.cleaned_data.get('username')
             messages.success(request, f'Cool! Account created for {username}. Now you can login with your credentials')
-            return redirect('home') #name of the project-level homepage if you look under in the loginlogout urls.py file
+            return redirect('') #name of the project-level homepage if you look under in the loginlogout urls.py file
     else:
         form = UserSignUpForm()
     return render(request, 'signup.html', {'form': form})

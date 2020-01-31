@@ -5,10 +5,18 @@
 
 {% block content %}
 {% if user.is_authenticated %}
-  <h1> Hi there {{user.username}}! Click on the profile button to view your profile</h1>
-  <p><a href=/profile>profile</a></p>
-  <p><a href = /accounts/logout>logout</a></p>
-
+    <h1> Hi there {{user.username}}! Click on the profile button to view your profile</h1>
+    <br>
+    <h2> Please complete the questionnaire below so that we can get to know you better!</h2>
+    <br>
+    <form action="" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Submit">
+    </form>
+    <br>
+    <p><a href=/profile>profile</a></p>
+    <p><a href = /accounts/logout>logout</a></p>
 {% else %}
     <div class="container">
         <h1> Welcome to FYNAT! </h1>
