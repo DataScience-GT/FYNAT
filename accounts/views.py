@@ -6,7 +6,8 @@ from django.contrib import messages
 from django.shortcuts import render, redirect
 from .forms import UserSignUpForm
 from django.contrib.auth.decorators import login_required
-
+from django.contrib.auth.models import User
+from dashboard.models import User
 
 # class SignUp(generic.CreateView):
 #     form = UserCreationForm(request.POST)
@@ -31,4 +32,5 @@ def signup(request):
 
 @login_required
 def profile(request):
-    return render(request, 'profile.html')
+    curr_user = User.users.filter(username=User.username)
+    return render(request, 'profile.html', {'curr_user', curr_user})
