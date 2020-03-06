@@ -4,8 +4,9 @@
     <title>FYNAT title</title>
 </head>
 <body>
-    {% block body %}
-    <div class = "container">
+
+<div class = "container">
+    <div class = "col-md-8">
         <h1>Please enter your 3 favorite classes below</h1>
         <form method = "post">
             {%csrf_token %}
@@ -14,10 +15,11 @@
         </form>
         <h1> Your name is {{user.username}} and you are taking: <h1>
         <h2> {{ text }} </h2>
-        {% for post in posts %}
-            <h1> {{ post.post }} </h1>
-            <p> {{ post.date }} </p>
+        <!--{% for post in posts %}
+        <h1> {{ post.post }} </h1>
+        <p> {{ post.date }} </p>
         {% endfor %}
+    -->
         <h2> {{ text2 }} </h2>
         {% for post in posts %}
             <h1> {{ post.post }} </h1>
@@ -29,7 +31,13 @@
             <p> {{ post.date }} </p>
         {% endfor %}
     </div>
-    {% endblock %}
+    <div class = "col-md-4">
+        <h2> Your friends </h2>
+        {% for user in users %}
+            <a href = "{% url 'account:view_profile' %}">  <!-- reuse code by using same profile page that was setup for our own case, but call it using a different user object -->
+                <h3>{{user.username}}</h3>
+        {% endfor %}
+    </div>
 </body>
 </html>
 

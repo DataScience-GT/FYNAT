@@ -32,3 +32,6 @@ def signup(request):
 @login_required
 def profile(request):
     return render(request, 'profile.html')
+
+def view_profile(request):
+    return render(request, 'profile.html')

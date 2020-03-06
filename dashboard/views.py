@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from django.views.generic import TemplateView
 from dashboard.forms import HomeForm
 from dashboard.models import Post
+from django.contrib.auth.models import User
 
 # Create your views here.
 
@@ -13,8 +14,9 @@ class HomeView(TemplateView):
 
     def get(self, request): #Handling get requests
         form = HomeForm() #empty constructor renders blank form
-        posts = Post.objects.all() #get all post objects in the database
-        return render(request, self.template_name, {'form': form})
+        posts = Post.objects.all() #get all post objects in the database, query database
+        users = User.objects.all()
+        return render(request, self.template_name, {'form': form, 'users':users})
     def post(self, request):
         form = HomeForm(request.POST) #fills out form that was received with post request
         if form.is_valid():
