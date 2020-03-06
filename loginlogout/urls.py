@@ -20,12 +20,13 @@ from django.views.generic.base import TemplateView
 from accounts import views as account_views
 from django.conf import settings
 from django.conf.urls.static import static
+from dashboard import views as dashboard_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('accounts.urls')), # new
     path('accounts/', include('django.contrib.auth.urls')),
-    path('', TemplateView.as_view(template_name='home.html'), name='home'),
+    path('', dashboard_views.home, name="home"),
     path('dashboard/', include('dashboard.urls')),
     path('profile/', account_views.profile, name="profile"),
 ]
