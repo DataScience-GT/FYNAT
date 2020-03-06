@@ -32,5 +32,5 @@ def signup(request):
 
 @login_required
 def profile(request):
-    curr_user = User.users.filter(username=User.username)
-    return render(request, 'profile.html', {'curr_user', curr_user})
+    #curr_user = User.users.filter(username=User.username)
+    return render(request, 'profile.html') #, {'curr_user', curr_user})
